@@ -8,7 +8,7 @@ const getSavedTodos = function(){
         return []
     }
 }
-   //asdf
+   
 //Save todos after todo added button clicked
 const saveTodos = function(todos){
     localStorage.setItem('todos', JSON.stringify(todos))
