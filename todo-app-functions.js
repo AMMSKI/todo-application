@@ -1,14 +1,9 @@
 //Get saved todos from Local storage
 const getSavedTodos = () => {
     const todoJSON = localStorage.getItem('todos')
+    return todoJSON !== null ? JSON.parse(todoJSON) : [] 
+}   
 
-    if(todoJSON !== null){
-        return JSON.parse(todoJSON)
-    } else {
-        return []
-    }
-}
-   
 //Save todos after todo added button clicked
 const saveTodos = (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos))
