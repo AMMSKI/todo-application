@@ -1,13 +1,21 @@
+'use strict'
+
 //Get saved todos from Local storage
 const getSavedTodos = () => {
     const todoJSON = localStorage.getItem('todos')
-    return todoJSON !== null ? JSON.parse(todoJSON) : [] 
+
+    try{
+        return todoJSON ? JSON.parse(todoJSON) : []
+    }catch(e){
+        return []
+    }  
 }   
 
 //Save todos after todo added button clicked
 const saveTodos = (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
+
 //Render todos based on the filters
 const renderTodos = (todos, filters) => {
     console.log(todos)
@@ -40,7 +48,7 @@ const removeTodo = (id) => {
 //toggle completed value for todo
 const toggleTodo = (id) => {
     const todo = todos.find((todo) => todo.id === id)
-    if (todo !== undefined){
+    if (todo){
         todo.completed = !todo.completed
     }
 }
