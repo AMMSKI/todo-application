@@ -16,14 +16,16 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
 
 document.querySelector('#new-todo').addEventListener('submit', (e) => {
     e.preventDefault()
+    if(e.target.elements.text.value.trim().length > 0) {
     todos.push({
         id: uuidv4(),
-        text: e.target.elements.text.value,
+        text: e.target.elements.text.value.trim(),
         completed: false
     })
     saveTodos(todos)
     renderTodos(todos, filters)
     e.target.elements.text.value = ''
+    } 
 })
 
 document.querySelector('#hide-complete').addEventListener('change', (e) => {
